@@ -1,0 +1,88 @@
+﻿@using BTCPayServer.Stream.Data.Enums;
+
+@model BTCPayServer.Stream.Portal.ViewModels.Settings.CustomizationFormViewModel
+
+@{
+    ViewData["Title"] = CommonResource.Title_Customization;
+}
+
+<div class="row">
+    <partial name="~/Views/Settings/_SideMenu.cshtml" />
+    <div class="col-md-9">
+        <div class="row">
+            <div class="form-container form-container-common">
+                <h4>@CommonResource.Title_Customization</h4>
+                <hr />
+                <form method="post" id="CustomizationForm" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Stylesheet" class="control-label"></label>
+                        <div class="file-area-field">
+                            <input asp-for="StylesheetFileName" type="hidden" />
+                            <label class="btn btn-outline-secondary file-selection" asp-for="Stylesheet">@CommonResource.Button_SelectFile</label>
+                            <input asp-for="Stylesheet" accept="text/css" class="form-control" />
+                            <span class="selected-value">@Model.StylesheetFileName</span>
+                            <span class="file-clear fas fa-times"></span>
+                        </div>
+                        <span asp-validation-for="Stylesheet" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-group-required">
+                        <label asp-for="DefaultCurrency" class="control-label"></label>
+                        <select asp-for="DefaultCurrency" class="form-control">
+                            <option value="@InvoiceCurrency.CZK">CZK</option>
+                            <option value="@InvoiceCurrency.EUR">EUR</option>
+                            <option value="@InvoiceCurrency.USD">USD</option>
+                            <option value="@InvoiceCurrency.SAT">SAT</option>
+                        </select>
+                        <span asp-validation-for="DefaultCurrency" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-group-required">
+                        <label asp-for="DefaultCulture" class="control-label"></label>
+                        <select asp-for="DefaultCulture" class="form-control">
+                            <option value="@Culture.EN">@CommonResource.Languages_Options_English</option>
+                            <option value="@Culture.CZ">@CommonResource.Languages_Options_Czech</option>
+                        </select>
+                        <span asp-validation-for="DefaultCulture" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Logo" class="control-label"></label>
+                        <div class="file-area-field">
+                            <input asp-for="LogoFileName" type="hidden" />
+                            <label class="btn btn-outline-secondary file-selection" asp-for="Logo">@CommonResource.Button_SelectFile</label>
+                            <input asp-for="Logo" accept="image/png,image/jpeg" class="form-control" />
+                            <span class="selected-value">@Model.LogoFileName</span>
+                            <span class="file-clear fas fa-times"></span>
+                        </div>
+                        <span asp-validation-for="Logo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PageTitle" class="control-label"></label>
+                        <input asp-for="PageTitle" class="form-control" />
+                        <span asp-validation-for="PageTitle" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="GtagId" class="control-label"></label>
+                        <input asp-for="GtagId" class="form-control" />
+                        <span asp-validation-for="GtagId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="@CommonResource.Button_Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <environment names="Development">
+        <script type="text/javascript" src="~/js/AjaxForm.js"></script>
+    </environment>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            BTCPayServerStream.SetFilesEvents('#CustomizationForm');
+            $('#CustomizationForm').AjaxForm();
+        });
+    </script>
+}

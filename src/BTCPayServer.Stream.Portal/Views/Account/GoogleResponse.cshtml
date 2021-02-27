@@ -1,0 +1,41 @@
+﻿@model BTCPayServer.Stream.Portal.ViewModels.Account.GoogleRegisterFormViewModel
+
+@{
+    ViewData["Title"] = "Finish registration";
+}
+
+<div class="row">
+    <div class="col-md-6" style="margin: 0 auto;">
+        <h4>Finish user registration</h4>
+        <hr />
+        <form asp-action="FinishRegistration" method="post">
+            <input type="hidden" asp-for="Email" />
+            <input type="hidden" asp-for="Firstname" />
+            <input type="hidden" asp-for="Surname" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-group-required">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control disabled" disabled />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group form-group-required">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control disabled" disabled />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-group-required">
+                <label asp-for="DonatePageIdentifier" class="control-label"></label>
+                <input asp-for="DonatePageIdentifier" class="form-control" />
+                <span asp-validation-for="DonatePageIdentifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

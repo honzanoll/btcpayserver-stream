@@ -1,0 +1,50 @@
+﻿@model BTCPayServer.Stream.Portal.ViewModels.Settings.ChangePasswordFormViewModel
+
+@{
+    ViewData["Title"] = CommonResource.Title_ChangePassword;
+}
+
+<div class="row">
+    <partial name="~/Views/Settings/_SideMenu.cshtml" />
+    <div class="col-md-9">
+        <div class="row">
+            <div class="form-container form-container-common">
+                <h4>@CommonResource.Title_ChangePassword</h4>
+                <hr />
+                <form method="post" id="ChangePasswordForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group form-group-required">
+                        <label asp-for="CurrentPassword" class="control-label"></label>
+                        <input asp-for="CurrentPassword" type="password" class="form-control" />
+                        <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-group-required">
+                        <label asp-for="NewPassword" class="control-label"></label>
+                        <input asp-for="NewPassword" type="password" class="form-control" />
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-group-required">
+                        <label asp-for="ConfirmPassword" class="control-label"></label>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="@CommonResource.Button_Change" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <environment names="Development">
+        <script type="text/javascript" src="~/js/AjaxForm.js"></script>
+    </environment>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ChangePasswordForm').AjaxForm();
+        });
+    </script>
+}

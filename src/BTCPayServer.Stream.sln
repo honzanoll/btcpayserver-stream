@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTCPayServer.Stream.Common", "BTCPayServer.Stream.Common\BTCPayServer.Stream.Common.csproj", "{08A2A097-7599-4050-AD8B-F79E1A060D75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTCPayServer.Stream.Data", "BTCPayServer.Stream.Data\BTCPayServer.Stream.Data.csproj", "{6ABE8B0D-E5DA-459A-B051-A40231603FCD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTCPayServer.Stream.Repository", "BTCPayServer.Stream.Repository\BTCPayServer.Stream.Repository.csproj", "{8505E245-3DE1-41B8-963F-AF29D3A18519}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTCPayServer.Stream.Portal", "BTCPayServer.Stream.Portal\BTCPayServer.Stream.Portal.csproj", "{961EF9AB-5470-4F18-97AD-DD1A79E20233}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTCPayServer.Stream.Business", "BTCPayServer.Stream.Business\BTCPayServer.Stream.Business.csproj", "{F7AE014C-EE5B-44D5-AEA7-50FBDDF25EFB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTCPayServer.Stream.HttpClients", "BTCPayServer.Stream.HttpClients\BTCPayServer.Stream.HttpClients.csproj", "{188C6F0D-FAA8-4AC9-BD23-E17AD1017B22}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{A1A3E1D1-7B02-4262-B26C-D06D60EF7F58}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{F5BBF904-82BD-4C88-AC39-36C7DBB82710}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B02F54AA-9C2C-4D91-992A-62BAFA64A332}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08A2A097-7599-4050-AD8B-F79E1A060D75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A2A097-7599-4050-AD8B-F79E1A060D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A2A097-7599-4050-AD8B-F79E1A060D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A2A097-7599-4050-AD8B-F79E1A060D75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ABE8B0D-E5DA-459A-B051-A40231603FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ABE8B0D-E5DA-459A-B051-A40231603FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ABE8B0D-E5DA-459A-B051-A40231603FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ABE8B0D-E5DA-459A-B051-A40231603FCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8505E245-3DE1-41B8-963F-AF29D3A18519}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8505E245-3DE1-41B8-963F-AF29D3A18519}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8505E245-3DE1-41B8-963F-AF29D3A18519}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8505E245-3DE1-41B8-963F-AF29D3A18519}.Release|Any CPU.Build.0 = Release|Any CPU
+		{961EF9AB-5470-4F18-97AD-DD1A79E20233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961EF9AB-5470-4F18-97AD-DD1A79E20233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961EF9AB-5470-4F18-97AD-DD1A79E20233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961EF9AB-5470-4F18-97AD-DD1A79E20233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7AE014C-EE5B-44D5-AEA7-50FBDDF25EFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7AE014C-EE5B-44D5-AEA7-50FBDDF25EFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7AE014C-EE5B-44D5-AEA7-50FBDDF25EFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7AE014C-EE5B-44D5-AEA7-50FBDDF25EFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{188C6F0D-FAA8-4AC9-BD23-E17AD1017B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{188C6F0D-FAA8-4AC9-BD23-E17AD1017B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{188C6F0D-FAA8-4AC9-BD23-E17AD1017B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{188C6F0D-FAA8-4AC9-BD23-E17AD1017B22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6ABE8B0D-E5DA-459A-B051-A40231603FCD} = {F5BBF904-82BD-4C88-AC39-36C7DBB82710}
+		{8505E245-3DE1-41B8-963F-AF29D3A18519} = {F5BBF904-82BD-4C88-AC39-36C7DBB82710}
+		{961EF9AB-5470-4F18-97AD-DD1A79E20233} = {B02F54AA-9C2C-4D91-992A-62BAFA64A332}
+		{F7AE014C-EE5B-44D5-AEA7-50FBDDF25EFB} = {F5BBF904-82BD-4C88-AC39-36C7DBB82710}
+		{188C6F0D-FAA8-4AC9-BD23-E17AD1017B22} = {A1A3E1D1-7B02-4262-B26C-D06D60EF7F58}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6592C72E-5D0A-4CC0-ABCB-0747F2793000}
+	EndGlobalSection
+EndGlobal

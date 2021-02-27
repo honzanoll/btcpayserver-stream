@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Change" xml:space="preserve">
+    <value>Změnit</value>
+  </data>
+  <data name="Button_Connect" xml:space="preserve">
+    <value>Připojit</value>
+  </data>
+  <data name="Button_CopyUrl" xml:space="preserve">
+    <value>Zkopírovat URL</value>
+  </data>
+  <data name="Button_Disconnect" xml:space="preserve">
+    <value>Odpojit</value>
+  </data>
+  <data name="Button_Login" xml:space="preserve">
+    <value>Přihlásit</value>
+  </data>
+  <data name="Button_Save" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+  <data name="Button_SelectFile" xml:space="preserve">
+    <value>Vyberte soubor</value>
+  </data>
+  <data name="Button_Send" xml:space="preserve">
+    <value>Odeslat</value>
+  </data>
+  <data name="Button_SendTestAlert" xml:space="preserve">
+    <value>Odeslat testovací alert</value>
+  </data>
+  <data name="Label_Amount" xml:space="preserve">
+    <value>Obnos</value>
+  </data>
+  <data name="Label_BTCPayServerStoreId" xml:space="preserve">
+    <value>Store ID na vašem BTCPay serveru</value>
+  </data>
+  <data name="Label_BTCPayServerUrl" xml:space="preserve">
+    <value>URL vašeho BTCPay serveru</value>
+  </data>
+  <data name="Label_ConfirmNewPassword" xml:space="preserve">
+    <value>Nové heslo znovu</value>
+  </data>
+  <data name="Label_CurrentPassword" xml:space="preserve">
+    <value>Stávající heslo</value>
+  </data>
+  <data name="Label_DefaultCulture" xml:space="preserve">
+    <value>Výchozí jazyk</value>
+  </data>
+  <data name="Label_DefaultCurrency" xml:space="preserve">
+    <value>Výchozí měna</value>
+  </data>
+  <data name="Label_DonatePageIdentifier" xml:space="preserve">
+    <value>Identifikátor donate stránky</value>
+  </data>
+  <data name="Label_DonatePageStylesheet" xml:space="preserve">
+    <value>CSS předpis pro donate stránku</value>
+  </data>
+  <data name="Label_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Label_GtagId" xml:space="preserve">
+    <value>Google Analytics identifikátor</value>
+  </data>
+  <data name="Label_NewPassword" xml:space="preserve">
+    <value>Nové heslo</value>
+  </data>
+  <data name="Label_PageLogo" xml:space="preserve">
+    <value>Logo donate stránky</value>
+  </data>
+  <data name="Label_PageTitle" xml:space="preserve">
+    <value>Titulek donate stránky</value>
+  </data>
+  <data name="Label_Password" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="Label_YourMessage" xml:space="preserve">
+    <value>Vaše zpráva</value>
+  </data>
+  <data name="Label_YourName" xml:space="preserve">
+    <value>Vaše jméno/přezdívka</value>
+  </data>
+  <data name="Languages_Options_Czech" xml:space="preserve">
+    <value>Čeština</value>
+  </data>
+  <data name="Languages_Options_English" xml:space="preserve">
+    <value>Angličtina</value>
+  </data>
+  <data name="Message_CannotAccessUserIdentity" xml:space="preserve">
+    <value>Nelze získat uživatelskou.</value>
+  </data>
+  <data name="Message_CannotFinishUserRegistration" xml:space="preserve">
+    <value>Nelze dokončit vaši registraci</value>
+  </data>
+  <data name="Message_CannotSendTipYet" xml:space="preserve">
+    <value>Donate nelze poslat.</value>
+  </data>
+  <data name="Message_NoPaymentGateway" xml:space="preserve">
+    <value>Žádná dostupná platební brána.</value>
+  </data>
+  <data name="Message_PageNotFound" xml:space="preserve">
+    <value>Stránka nenalezena</value>
+  </data>
+  <data name="Message_SendTipTo" xml:space="preserve">
+    <value>Poslat donate pro</value>
+  </data>
+  <data name="Message_SomethingWentWrong" xml:space="preserve">
+    <value>Něco se pokazilo</value>
+  </data>
+  <data name="Message_TestDonateQueued" xml:space="preserve">
+    <value>Testovací donate byl úspěšně zařazen do fronty.</value>
+  </data>
+  <data name="Message_ThankYouForTip" xml:space="preserve">
+    <value>Díky za donate</value>
+  </data>
+  <data name="Message_YouAreLoggedAs" xml:space="preserve">
+    <value>Jste přihlášen jako</value>
+  </data>
+  <data name="Text_BTCPay" xml:space="preserve">
+    <value>Připojte se k BTC Pay serveru, který bude zpracovávat platební operace.</value>
+  </data>
+  <data name="Text_DonationPage" xml:space="preserve">
+    <value>Veřejná stránka pro podporovatele.</value>
+  </data>
+  <data name="Text_Streamlabs" xml:space="preserve">
+    <value>Do systému stremlabs budou odesílány upozornění o přijatých platbách.</value>
+  </data>
+  <data name="Text_TestDonation" xml:space="preserve">
+    <value>Otestujte integraci se systémem Streamlabs bez posílání finančích prostředků.</value>
+  </data>
+  <data name="Title_Acknowledgment" xml:space="preserve">
+    <value>Poděkování</value>
+  </data>
+  <data name="Title_BTCPayServerConnection" xml:space="preserve">
+    <value>Spojení BTCPay Server</value>
+  </data>
+  <data name="Title_ChangePassword" xml:space="preserve">
+    <value>Změna hesla</value>
+  </data>
+  <data name="Title_Customization" xml:space="preserve">
+    <value>Přizpůsobení</value>
+  </data>
+  <data name="Title_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Title_Donate" xml:space="preserve">
+    <value>Donate</value>
+  </data>
+  <data name="Title_DonationPage" xml:space="preserve">
+    <value>Darovací stránka</value>
+  </data>
+  <data name="Title_Error" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="Title_Logout" xml:space="preserve">
+    <value>Odhlášení</value>
+  </data>
+  <data name="Title_Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="Title_Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="Title_SignIn" xml:space="preserve">
+    <value>Přihlášení</value>
+  </data>
+  <data name="Title_StreamlabsConnection" xml:space="preserve">
+    <value>Spojení Streamlabs</value>
+  </data>
+  <data name="Title_TestDonation" xml:space="preserve">
+    <value>Test notifikace</value>
+  </data>
+  <data name="Validation_DonatorRegularExpressionMatch" xml:space="preserve">
+    <value>Pouze písmena, čísla mezery a podtržítka v rozsahu 2-25 znaků jsou povolena</value>
+  </data>
+  <data name="Validation_IdentifierRegularExpressionMatch" xml:space="preserve">
+    <value>Povoleny pouze alfanumerické znaky a _ (podtržítko)</value>
+  </data>
+  <data name="Validation_InvalidFileType" xml:space="preserve">
+    <value>Neplatný formát souboru.</value>
+  </data>
+  <data name="Validation_InvalidPassword" xml:space="preserve">
+    <value>Neplatné heslo</value>
+  </data>
+  <data name="Validation_InvalidUrl" xml:space="preserve">
+    <value>Neplatný formát URL</value>
+  </data>
+  <data name="Validation_InvalidUsernameOrPassword" xml:space="preserve">
+    <value>Neplatné jméno nebo heslo</value>
+  </data>
+  <data name="Validation_Invalid_Format" xml:space="preserve">
+    <value>Neplatný formát</value>
+  </data>
+  <data name="Validation_MaxLength_230" xml:space="preserve">
+    <value>Překročena maximální délka (230 znaků)</value>
+  </data>
+  <data name="Validation_MaxLength_25" xml:space="preserve">
+    <value>Překročena maximální délka (25 znaků)</value>
+  </data>
+  <data name="Validation_MinLength_2" xml:space="preserve">
+    <value>Minimální délka jsou 2 znaky</value>
+  </data>
+  <data name="Validation_MinTip_Format" xml:space="preserve">
+    <value>Minimální výše donatu je {0} {1}</value>
+  </data>
+  <data name="Validation_PasswordDontMatch" xml:space="preserve">
+    <value>Hesla se neshodují</value>
+  </data>
+  <data name="Validation_Required" xml:space="preserve">
+    <value>Povinné pole</value>
+  </data>
+  <data name="Validation_UnknownTargetUser" xml:space="preserve">
+    <value>Neznámý příjemce</value>
+  </data>
+  <data name="Validation_UsedIdentifier" xml:space="preserve">
+    <value>Již existující identifikátor</value>
+  </data>
+</root>

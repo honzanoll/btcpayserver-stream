@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+
+<div class="dropdown dropdown-localization">
+    <button class="btn dropdown-toggle" type="button" id="languagesMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @if (requestCulture.RequestCulture.Culture.Name == "cs-CZ")
+        {
+            <div><img src="~/images/flags/cs_CZ.png" />CZ<span class="down-caret"></span></div>
+        }
+        else
+        {
+            <div><img src="~/images/flags/en_US.png" />EN<span class="down-caret"></span></div>
+        }
+    </button>
+    <ul class="dropdown-menu dropdown-menu-languages" aria-labelledby="languagesMenuButton">
+        <li class="dropdown-item" onclick="BTCPayServerStream.SwitchLocalization('en-US');"><img src="~/images/flags/en_US.png" alt="English flag" />EN</li>
+        <li class="dropdown-item" onclick="BTCPayServerStream.SwitchLocalization('cs-CZ');"><img src="~/images/flags/cs_CZ.png" alt="Czech flag" />CZ</li>
+    </ul>
+</div>

@@ -1,0 +1,26 @@
+﻿@model BTCPayServer.Stream.Portal.ViewModels.BtcPayServer.BtcPayServerLoginViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Login" method="post" id="BtcPayServerLoginForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-group-required">
+                <label asp-for="ServerUrl" class="control-label"></label>
+                <input asp-for="ServerUrl" class="form-control" />
+                <span asp-validation-for="ServerUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group form-group-required">
+                <label asp-for="StoreId" class="control-label"></label>
+                <input asp-for="StoreId" class="form-control" />
+                <span asp-validation-for="StoreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Connect" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#BtcPayServerLoginForm').AjaxForm();
+</script>

@@ -1,0 +1,32 @@
+﻿@{
+    string controllerName = ViewContext.RouteData.Values["Controller"].ToString();
+}
+
+<div class="col-md-3">
+    <div class="list-group">
+        @if (controllerName == "Profile")
+        {
+            <a class="list-group-item list-group-item-action active" asp-action="Index" asp-controller="Profile">@CommonResource.Title_Profile</a>
+        }
+        else
+        {
+            <a class="list-group-item list-group-item-action" asp-action="Index" asp-controller="Profile">@CommonResource.Title_Profile</a>
+        }
+        @if (controllerName == "ChangePassword")
+        {
+            <a class="list-group-item list-group-item-action active" asp-action="Index" asp-controller="ChangePassword">@CommonResource.Title_ChangePassword</a>
+        }
+        else
+        {
+            <a class="list-group-item list-group-item-action" asp-action="Index" asp-controller="ChangePassword">@CommonResource.Title_ChangePassword</a>
+        }
+        @if (controllerName == "Customization")
+        {
+            <a class="list-group-item list-group-item-action active" asp-action="Index" asp-controller="Customization">@CommonResource.Title_Customization</a>
+        }
+        else
+        {
+            <a class="list-group-item list-group-item-action" asp-action="Index" asp-controller="Customization">@CommonResource.Title_Customization</a>
+        }
+    </div>
+</div>

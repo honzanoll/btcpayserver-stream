@@ -1,0 +1,45 @@
+﻿@model BTCPayServer.Stream.Portal.ViewModels.Settings.ProfileFormViewModel
+
+@{
+    ViewData["Title"] = CommonResource.Title_Profile;
+}
+
+<div class="row">
+    <partial name="~/Views/Settings/_SideMenu.cshtml" />
+    <div class="col-md-9">
+        <div class="row">
+            <div class="form-container form-container-common">
+                <h4>@CommonResource.Title_Profile</h4>
+                <hr />
+                <form method="post" id="ProfileForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control disabled" disabled />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-group-required">
+                        <label asp-for="DonatePageIdentifier" class="control-label"></label>
+                        <input asp-for="DonatePageIdentifier" class="form-control" />
+                        <span asp-validation-for="DonatePageIdentifier" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="@CommonResource.Button_Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <environment names="Development">
+        <script type="text/javascript" src="~/js/AjaxForm.js"></script>
+    </environment>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ProfileForm').AjaxForm();
+        });
+    </script>
+}

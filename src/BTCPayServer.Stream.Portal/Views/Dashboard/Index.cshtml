@@ -1,0 +1,141 @@
+﻿@using BTCPayServer.Stream.Portal.ViewModels.Dashboard;
+
+@model DashboardViewModel;
+
+@{
+    ViewData["Title"] = CommonResource.Title_Dashboard;
+    var identity = this.User.Identity.Name;
+}
+
+@CommonResource.Message_YouAreLoggedAs <i>@identity</i>.
+<br />
+
+<div class="row dashboard-list">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-image">
+                <img src="~/images/btcpay.svg" class="" alt="BTCPay logo">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">BTCPay</h5>
+                <p class="card-text">@CommonResource.Text_BTCPay</p>
+                @if (Model.IsBtcPayServerConnected)
+                {
+                    <button class="btn btn-block btn-danger" data-toggle="modal" data-target="#ConnectDialog" onclick="BTCPayServerStream.ShowDialog('GET', '/oauth/btcpayserver/logout', 'ConnectDialogLabel', 'ConnectDialogContent')">@CommonResource.Button_Disconnect</button>
+                }
+                else
+                {
+                    <button class="btn btn-block btn-primary" data-toggle="modal" data-target="#ConnectDialog" onclick="BTCPayServerStream.ShowDialog('GET', '/oauth/btcpayserver/login', 'ConnectDialogLabel', 'ConnectDialogContent')">@CommonResource.Button_Connect</button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-image">
+                <img src="~/images/streamlabs.webp" class="" alt="Streamlabs logo">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Streamlabs</h5>
+                <p class="card-text">@CommonResource.Text_Streamlabs</p>
+                @if (Model.IsStreamlabsConnected)
+                {
+                    <button class="btn btn-block btn-danger" data-toggle="modal" data-target="#ConnectDialog" onclick="BTCPayServerStream.ShowDialog('GET', '/oauth/streamlabs/logout', 'ConnectDialogLabel', 'ConnectDialogContent')">@CommonResource.Button_Disconnect</button>
+                }
+                else
+                {
+                    <a class="btn btn-block btn-primary" asp-action="Login" asp-controller="StreamlabsOAuth">@CommonResource.Button_Connect</a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-image">
+                <img src="~/images/lightning.svg" class="" alt="Test alert logo">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@CommonResource.Title_TestDonation</h5>
+                <p class="card-text">@CommonResource.Text_TestDonation</p>
+                @if (Model.IsStreamlabsConnected)
+                {
+                    <button class="btn btn-block btn-dark" onclick="SendTestDonation()">@CommonResource.Button_SendTestAlert</button>
+                }
+                else
+                {
+                    <button class="btn btn-block btn-dark disabled">@CommonResource.Button_SendTestAlert</button>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-image" style="height: 80px;">
+                <img src="~/images/btc.svg" class="" alt="Bitcoin logo">
+            </div>
+            <div class="card-body" style="padding-top: 12px;">
+                <h5 class="card-title card-title-main">@Model.BitcoinCurrentPriceText</h5>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title" style="display: inline-block;">@CommonResource.Title_DonationPage</h5><a href="@Model.DonationUrl" target="_blank" style="padding-left: 7px; font-size: 13px;"><i class="fas fa-external-link-alt"></i></a>
+                <p class="card-text">@CommonResource.Text_DonationPage</p>
+                <input type="hidden" id="DonationUrl" value="@Model.DonationUrl" />
+                <button class="btn btn-block btn-info" id="CopyDonationUrl">@CommonResource.Button_CopyUrl</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="ConnectDialog" tabindex="-1" role="dialog" aria-labelledby="ConnectDialogLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="ConnectDialogLabel"></h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="ConnectDialogContent"><div style="text-align:center; width:100%"><div class="spinner"></div></div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <environment names="Development">
+        <script type="text/javascript" src="~/js/AjaxForm.js"></script>
+    </environment>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var temp = $("<input>");
+            var url = $('#DonationUrl').attr('value');
+
+            $('#CopyDonationUrl').on('click', function () {
+                $("body").append(temp);
+                temp.val(url).select();
+                document.execCommand("copy");
+                temp.remove();
+            });
+        });
+
+        function SendTestDonation() {
+            ShowPageLoader();
+            $.ajax({
+                type: 'POST',
+                url: '/Dashboard/TestDonation',
+                cache: false,
+                success: function (result) {
+                    HidePageLoader();
+                    BTCPayServerStream.AddFlashMessage('@CommonResource.Message_TestDonateQueued', BTCPayServerStream.MessageContext.SUCCESS);
+                },
+                error: function (xhr, status, error) {
+                    HidePageLoader();
+                    BTCPayServerStream.AddFlashMessage('@CommonResource.Message_SomethingWentWrong', BTCPayServerStream.MessageContext.ERROR, true);
+                }
+            });
+        }
+    </script>
+}

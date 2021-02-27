@@ -1,0 +1,26 @@
+﻿@import 'common.less';
+
+html {
+    font-size: 14px;
+
+    body {
+        font-family: @FontFamily;
+        background-color: @ColorBackground;
+    }
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    .middle {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+#LoginFormContainer {
+    margin: 0 auto;
+}

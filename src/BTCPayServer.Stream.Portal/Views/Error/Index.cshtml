@@ -1,0 +1,20 @@
+﻿@model ErrorViewModel;
+
+@{
+    if (Model.ErrorNumber != null)
+    {
+        ViewData["Title"] = CommonResource.Title_Error + " " + Model.ErrorNumber;
+    }
+    else
+    {
+        ViewData["Title"] = CommonResource.Title_Error;
+    }
+}
+
+<div class="error-page-container">
+    <div class="error-page-info">
+        <i class="far fa-frown"></i>
+        <span class="code">@Model.ErrorNumber</span>
+        <span class="label">@Model.ErrorMessage</span>
+    </div>
+</div>

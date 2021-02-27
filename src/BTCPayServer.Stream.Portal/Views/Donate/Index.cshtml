@@ -1,0 +1,102 @@
+﻿@using BTCPayServer.Stream.Portal.ViewModels.Donates;
+@using BTCPayServer.Stream.Data.Enums;
+
+@model DonateFormViewModel;
+
+@{
+    Layout = "_LayoutPublic";
+    ViewData["Title"] = CommonResource.Title_Donate;
+}
+
+<div class="row">
+    <div class="form-container form-container-common" id="DonateFormContainer">
+        @if (string.IsNullOrEmpty(Model.Problem))
+        {
+            <h4>@CommonResource.Message_SendTipTo <i>@Model.TargetUserIdentifier</i></h4>
+            <hr />
+            <form asp-action="Donate" method="post" id="DonateForm">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="TargetUserId" type="hidden" />
+                <div class="form-group form-group-required row">
+                    <div class="col-9" style="padding-right: 0;">
+                        <label asp-for="Amount" class="control-label"></label>
+                        <input asp-for="Amount" type="number" step="0.01" min="1" class="form-control" autocomplete="off" style="border-top-right-radius: 0; border-bottom-right-radius: 0;" autofocus />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                    <div class="col-3" style="padding-left: 0;">
+                        <label></label>
+                        <select asp-for="Currency" class="form-control">
+                            <option value="@InvoiceCurrency.CZK">CZK</option>
+                            <option value="@InvoiceCurrency.EUR">EUR</option>
+                            <option value="@InvoiceCurrency.USD">USD</option>
+                            <option value="@InvoiceCurrency.SAT">SAT</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Donator" class="control-label"></label>
+                    <input asp-for="Donator" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Donator" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label"></label>
+                    <textarea asp-for="Message" class="form-control"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="@CommonResource.Button_Send" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+        else
+        {
+            <div style="margin-top: 20px; text-align: center;">
+                <h5 style="margin-bottom: 0; text-transform: uppercase;">@CommonResource.Message_CannotSendTipYet</h5>
+                <h6 style=" color: #aaaaaa;">@Model.Problem</h6>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <environment names="Development">
+        <script type="text/javascript" src="~/js/AjaxForm.js"></script>
+    </environment>
+
+    @if (ViewData["GtagId"] != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#DonateForm').AjaxForm({
+                    preventHigingLoader: true,
+                    onSuccess: function (data) {
+                        setTimeout(redirectToPayment, 1000);
+
+                        gtag('event', 'begin_checkout', {
+                            currency: data.data.currency,
+                            value: data.data.value,
+                            event_callback: redirectToPayment
+                        });
+
+                        function redirectToPayment() {
+                            window.location = data.data.url;
+                        }
+                    }
+                });
+            });
+        </script>
+    }
+    else
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#DonateForm').AjaxForm({
+                    preventHigingLoader: true,
+                    onSuccess: function (data) {
+                        window.location = data.data.url;
+                    }
+                });
+            });
+        </script>
+    }
+}

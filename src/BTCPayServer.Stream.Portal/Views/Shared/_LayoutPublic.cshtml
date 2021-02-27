@@ -1,0 +1,95 @@
+﻿@using BTCPayServer.Stream.Portal.Helpers;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @if (ViewData["GtagId"] != null)
+    {
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-PFRWBBDY5W"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', '@ViewData["GtagId"]');
+        </script>
+    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
+    @if (ViewData["PageTitle"] != null)
+    {
+        <title>@ViewData["Title"] - @ViewData["PageTitle"]</title>
+    }
+    else
+    {
+        <title>@ViewData["Title"] - BTCPayServer.Stream</title>
+    }
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome-free-5.15.1-web/css/all.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @if (ViewData["StylesheetLink"] != null)
+    {
+        <link rel="stylesheet" href="@ViewData["StylesheetLink"]" />
+    }
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-3">
+            <div class="container">
+                @if (ViewData["LogoLink"] != null)
+                {
+                    <div class="navbar-logo" style="background-image:url('@ViewData["LogoLink"]')"></div>
+                }
+                @if (ViewData["PageTitle"] != null)
+                {
+                    <span class="navbar-brand">@ViewData["PageTitle"]</span>
+                }
+                else
+                {
+                    <span class="navbar-brand">BTCPayServer.Stream - Bitcoin Payment System</span>
+                }
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1 navbar-nav-public">
+                        <li>
+                            <partial name="_Localization" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="FlashMessages" class="flash-messages"><div class="container"></div></div>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; @DateTime.Today.Year - <a href="mailto:me@honzanoll.cz">BTCPayServer.Stream</a> @AssemblyHelper.GetAssemblyInformationalVersion()
+        </div>
+    </footer>
+
+    <div class="site-loader">
+        <div class="loader"><div></div><div></div><div></div><div></div></div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-form/dist/js/jquery.form.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <environment include="Development">
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
