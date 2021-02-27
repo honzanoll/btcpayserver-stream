@@ -68,7 +68,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#DonateForm').AjaxForm({
-                    preventHigingLoader: true,
+                    preventHidingLoader: true,
                     onSuccess: function (data) {
                         setTimeout(redirectToPayment, 1000);
 
@@ -91,7 +91,7 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#DonateForm').AjaxForm({
-                    preventHigingLoader: true,
+                    preventHidingLoader: true,
                     onSuccess: function (data) {
                         window.location = data.data.url;
                     }

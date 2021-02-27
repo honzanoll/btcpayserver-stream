@@ -72,6 +72,11 @@ namespace BTCPayServer.Stream.Repository.Implementations.Users
             await sqlContext.SaveChangesAsync();
         }
 
+        public bool AnyUser()
+        {
+            return sqlContext.Users.Any();
+        }
+
         #endregion
     }
 }

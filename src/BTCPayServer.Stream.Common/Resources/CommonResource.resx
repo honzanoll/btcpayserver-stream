@@ -132,6 +132,9 @@
   <data name="Button_Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="Button_Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
   <data name="Button_Save" xml:space="preserve">
     <value>Save</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="Label_ConfirmNewPassword" xml:space="preserve">
     <value>Confirm new password</value>
+  </data>
+  <data name="Label_ConfirmPassword" xml:space="preserve">
+    <value>Confirm password</value>
   </data>
   <data name="Label_CurrentPassword" xml:space="preserve">
     <value>Current password</value>
@@ -272,6 +278,9 @@
   </data>
   <data name="Title_Profile" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="Title_Register" xml:space="preserve">
+    <value>Registration</value>
   </data>
   <data name="Title_Settings" xml:space="preserve">
     <value>Settings</value>

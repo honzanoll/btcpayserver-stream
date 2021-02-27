@@ -41,7 +41,7 @@
                         else if (typeof params !== 'undefined' && typeof params.onSuccess === 'function') {
                             params.onSuccess(data);
 
-                            if (typeof params.preventHigingLoader === 'undefined' || params.preventHigingLoader === false) {
+                            if (typeof params.preventHidingLoader === 'undefined' || params.preventHidingLoader === false) {
                                 HidePageLoader();
                             }
                             

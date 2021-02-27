@@ -132,6 +132,9 @@
   <data name="Button_Login" xml:space="preserve">
     <value>Přihlásit</value>
   </data>
+  <data name="Button_Register" xml:space="preserve">
+    <value>Registrovat</value>
+  </data>
   <data name="Button_Save" xml:space="preserve">
     <value>Uložit</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="Label_ConfirmNewPassword" xml:space="preserve">
     <value>Nové heslo znovu</value>
+  </data>
+  <data name="Label_ConfirmPassword" xml:space="preserve">
+    <value>Heslo znovu</value>
   </data>
   <data name="Label_CurrentPassword" xml:space="preserve">
     <value>Stávající heslo</value>
@@ -272,6 +278,9 @@
   </data>
   <data name="Title_Profile" xml:space="preserve">
     <value>Profil</value>
+  </data>
+  <data name="Title_Register" xml:space="preserve">
+    <value>Registrace</value>
   </data>
   <data name="Title_Settings" xml:space="preserve">
     <value>Nastavení</value>

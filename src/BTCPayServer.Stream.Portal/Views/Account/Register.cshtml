@@ -1,0 +1,51 @@
+﻿@model BTCPayServer.Stream.Portal.ViewModels.Account.RegisterFormViewModel
+
+@{
+    ViewData["Title"] = CommonResource.Title_Register;
+    Layout = "~/Views/Shared/_LayoutPublic.cshtml";
+}
+
+<div class="row">
+    <div class="form-container form-container-common">
+        <h4>@CommonResource.Title_Register</h4>
+        <hr />
+        <form asp-action="Register" method="post" id="RegisterForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" type="password" class="form-control" autocomplete="off" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonatePageIdentifier" class="control-label"></label>
+                <input asp-for="DonatePageIdentifier" class="form-control" autocomplete="off" />
+                <span asp-validation-for="DonatePageIdentifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="@CommonResource.Button_Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <environment names="Development">
+        <script type="text/javascript" src="~/js/AjaxForm.js"></script>
+    </environment>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#RegisterForm').AjaxForm();
+        });
+    </script>
+}

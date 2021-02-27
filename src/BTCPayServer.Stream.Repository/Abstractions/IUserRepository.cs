@@ -20,6 +20,8 @@ namespace BTCPayServer.Stream.Repository.Abstractions
 
         Task UpdateAsync(ApplicationUser user);
 
+        bool AnyUser();
+
         #endregion
     }
 }

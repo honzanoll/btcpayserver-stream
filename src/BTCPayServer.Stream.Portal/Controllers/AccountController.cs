@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using System.Security.Policy;
+﻿using System.Security.Policy;
 using System.Threading.Tasks;
 using BTCPayServer.Stream.Common.Resources;
 using BTCPayServer.Stream.Data.Models.Users;
-using BTCPayServer.Stream.Portal.ViewModels;
 using BTCPayServer.Stream.Portal.ViewModels.Account;
 using BTCPayServer.Stream.Repository.Abstractions;
 using Microsoft.AspNetCore.Authorization;
@@ -45,16 +42,21 @@ namespace BTCPayServer.Stream.Portal.Controllers
 
         public IActionResult Login(string redirectUrl = null)
         {
-            return View();
+            if (signInManager.IsSignedIn(User))
+                return RedirectToAction(nameof(DashboardController.Index), "Dashboard");
+
+            if (userRepository.AnyUser())
+                return View();
+
+            return RedirectToAction(nameof(Register));
         }
 
-        [HttpPost("account/login")]
+        [HttpPost("Account/Login")]
         public async Task<IActionResult> ProcessLogin(LoginFormViewModel values, [FromServices] LinkGenerator linkGenerator, string redirectUrl = null)
         {
             if (ModelState.IsValid)
             {
                 SignInResult signInResult = await signInManager.PasswordSignInAsync(values.Email, values.Password, isPersistent: false, lockoutOnFailure: false);
-
                 if (signInResult.Succeeded)
                 {
                     if (!string.IsNullOrWhiteSpace(redirectUrl))
@@ -69,51 +71,56 @@ namespace BTCPayServer.Stream.Portal.Controllers
             return Json(new FormValidationsViewModel(ModelState));
         }
 
-        public IActionResult Registration()
+        public IActionResult Register()
         {
-            return NotFound();
+            if (userRepository.AnyUser())
+                return RedirectToAction(nameof(Login));
+
+            return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> FinishRegistration(GoogleRegisterFormViewModel values)
+        [HttpPost("Account/Register")]
+        public async Task<IActionResult> FinishRegistration(RegisterFormViewModel values, [FromServices] LinkGenerator linkGenerator)
         {
-            if (!ModelState.IsValid)
-                return View(nameof(Registration), values);
+            if (userRepository.AnyUser())
+                return RedirectToAction(nameof(Login));
 
-            ExternalLoginInfo externalLoginInfo = await signInManager.GetExternalLoginInfoAsync();
-            if (externalLoginInfo == null)
-                return BadRequest();
-
-            values = GetFormViewModel(externalLoginInfo, values);
-
-            if (userRepository.ExistsIdentifier(values.DonatePageIdentifier.ToLower()))
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError(nameof(values.DonatePageIdentifier), CommonResource.Validation_UsedIdentifier);
-                return View(nameof(Registration), values);
-            }
-
-            ApplicationUser applicationUser = new ApplicationUser
-            {
-                UserName = values.Email,
-                Email = values.Email,
-                Firstame = values.Firstname,
-                Surname = values.Surname,
-                DonatePageIdentifier = values.DonatePageIdentifier.ToLower()
-            };
-
-            IdentityResult identityResult = await userManager.CreateAsync(applicationUser);
-            if (identityResult.Succeeded)
-            {
-                identityResult = await userManager.AddLoginAsync(applicationUser, externalLoginInfo);
-                if (identityResult.Succeeded)
+                if (values.Password == values.ConfirmPassword)
                 {
-                    await signInManager.SignInAsync(applicationUser, isPersistent: false);
+                    if (!userRepository.ExistsIdentifier(values.DonatePageIdentifier.ToLower()))
+                    {
+                        ApplicationUser applicationUser = new ApplicationUser
+                        {
+                            UserName = values.Email,
+                            Email = values.Email,
+                            DonatePageIdentifier = values.DonatePageIdentifier.ToLower()
+                        };
 
-                    return RedirectToAction(nameof(DashboardController.Index), "Dashboard");
+                        IdentityResult identityResult = await userManager.CreateAsync(applicationUser, values.Password);
+                        if (identityResult.Succeeded)
+                        {
+                            await signInManager.SignInAsync(applicationUser, isPersistent: false);
+
+                            return Json(new FormValidationsViewModel(linkGenerator, nameof(DashboardController.Index), "Dashboard"));
+                        }
+                        else
+                        {
+                            foreach (IdentityError identityError in identityResult.Errors)
+                            {
+                                ModelState.AddModelError(nameof(values.Password), identityError.Description);
+                            }
+                        }
+                    }
+                    else
+                        ModelState.AddModelError(nameof(values.DonatePageIdentifier), CommonResource.Validation_UsedIdentifier);
                 }
+                else
+                    ModelState.AddModelError(nameof(values.ConfirmPassword), CommonResource.Validation_PasswordDontMatch);
             }
 
-            return View(nameof(ErrorController.Index), new ErrorViewModel(500, CommonResource.Message_CannotFinishUserRegistration));
+            return Json(new FormValidationsViewModel(ModelState));
         }
 
         [Authorize]
@@ -123,28 +130,5 @@ namespace BTCPayServer.Stream.Portal.Controllers
 
             return RedirectToAction(nameof(DashboardController.Index), "Dashboard");
         }
-
-        #region Private methods
-
-        private GoogleRegisterFormViewModel GetFormViewModel(ExternalLoginInfo externalLoginInfo, GoogleRegisterFormViewModel viewModel)
-        {
-            ClaimsIdentity identity = externalLoginInfo.Principal.Identities.FirstOrDefault();
-            if (identity == null)
-                return null;
-
-            string email = identity.Claims.SingleOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            string firstname = identity.Claims.SingleOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
-            string surname = identity.Claims.SingleOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
-
-            return new GoogleRegisterFormViewModel
-            {
-                Email = email,
-                Firstname = firstname,
-                Surname = surname,
-                DonatePageIdentifier = viewModel?.DonatePageIdentifier
-            };
-        }
-
-        #endregion
     }
 }

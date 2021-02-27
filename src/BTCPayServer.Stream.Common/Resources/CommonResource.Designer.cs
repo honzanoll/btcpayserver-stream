@@ -106,6 +106,15 @@ namespace BTCPayServer.Stream.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string Button_Register {
+            get {
+                return ResourceManager.GetString("Button_Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Button_Save {
@@ -174,6 +183,15 @@ namespace BTCPayServer.Stream.Common.Resources {
         public static string Label_ConfirmNewPassword {
             get {
                 return ResourceManager.GetString("Label_ConfirmNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm password.
+        /// </summary>
+        public static string Label_ConfirmPassword {
+            get {
+                return ResourceManager.GetString("Label_ConfirmPassword", resourceCulture);
             }
         }
         
@@ -525,6 +543,15 @@ namespace BTCPayServer.Stream.Common.Resources {
         public static string Title_Profile {
             get {
                 return ResourceManager.GetString("Title_Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        public static string Title_Register {
+            get {
+                return ResourceManager.GetString("Title_Register", resourceCulture);
             }
         }
         
