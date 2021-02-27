@@ -9,7 +9,7 @@ COPY ./BTCPayServer.Stream.Data ./BTCPayServer.Stream.Data
 COPY ./BTCPayServer.Stream.HttpClients ./BTCPayServer.Stream.HttpClients
 COPY ./BTCPayServer.Stream.Portal ./BTCPayServer.Stream.Portal
 COPY ./BTCPayServer.Stream.Repository ./BTCPayServer.Stream.Repository
-COPY ./BTCPayServer.Stream.LN.sln .
+COPY ./BTCPayServer.Stream.sln .
 COPY ./nuget.config .
 
 RUN dotnet restore
