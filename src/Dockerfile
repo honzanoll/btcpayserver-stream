@@ -1,8 +1,6 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /src
 
-ARG environment
-
 COPY ./BTCPayServer.Stream.Business ./BTCPayServer.Stream.Business
 COPY ./BTCPayServer.Stream.Common ./BTCPayServer.Stream.Common
 COPY ./BTCPayServer.Stream.Data ./BTCPayServer.Stream.Data
@@ -14,7 +12,7 @@ COPY ./nuget.config .
 
 RUN dotnet restore
 
-RUN dotnet publish ./BTCPayServer.Stream.Portal -c ${environment} -o /app
+RUN dotnet publish ./BTCPayServer.Stream.Portal -c Release -o /app
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
