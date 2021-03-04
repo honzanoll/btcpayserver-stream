@@ -237,6 +237,9 @@
   <data name="Message_YouAreLoggedAs" xml:space="preserve">
     <value>You are logged as</value>
   </data>
+  <data name="Question_ReallyDisconnect_Pattern" xml:space="preserve">
+    <value>Are you sure you want to disconnect {0}?</value>
+  </data>
   <data name="Text_BTCPay" xml:space="preserve">
     <value>Connect to specific BTCPay Server store, which will be used as payment processor.</value>
   </data>

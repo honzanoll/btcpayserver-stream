@@ -237,6 +237,9 @@
   <data name="Message_YouAreLoggedAs" xml:space="preserve">
     <value>Jste přihlášen jako</value>
   </data>
+  <data name="Question_ReallyDisconnect_Pattern" xml:space="preserve">
+    <value>Určitě si přejete odpojit {0}?</value>
+  </data>
   <data name="Text_BTCPay" xml:space="preserve">
     <value>Připojte se k BTC Pay serveru, který bude zpracovávat platební operace.</value>
   </data>

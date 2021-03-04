@@ -421,6 +421,15 @@ namespace BTCPayServer.Stream.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to disconnect {0}?.
+        /// </summary>
+        public static string Question_ReallyDisconnect_Pattern {
+            get {
+                return ResourceManager.GetString("Question_ReallyDisconnect_Pattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connect to specific BTCPay Server store, which will be used as payment processor..
         /// </summary>
         public static string Text_BTCPay {
