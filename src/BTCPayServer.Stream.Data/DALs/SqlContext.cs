@@ -32,7 +32,29 @@ namespace BTCPayServer.Stream.Data.DALs
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            base.OnModelCreating(builder);                
+            base.OnModelCreating(builder);
+
+            // Sqlite name tables without schema
+            if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
+            {
+                builder.Entity<StreamlabsAuthToken>()
+                    .ToTable("oAuth_Streamlabs");
+                builder.Entity<BtcPayServerAuthToken>()
+                    .ToTable("oAuth_BtcPayServer");
+
+                builder.Entity<BtcPayServerWebhook>()
+                    .ToTable("webhook_BtcPayServer");
+            }
+            else
+            {
+                builder.Entity<StreamlabsAuthToken>()
+                    .ToTable("Streamlabs", "oAuth");
+                builder.Entity<BtcPayServerAuthToken>()
+                    .ToTable("BtcPayServer", "oAuth");
+
+                builder.Entity<BtcPayServerWebhook>()
+                    .ToTable("BtcPayServer", "webhook");
+            }
         }
     }
 }

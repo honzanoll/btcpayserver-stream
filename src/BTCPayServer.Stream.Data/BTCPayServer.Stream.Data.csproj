@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.12" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.12" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.12" />
     <PackageReference Include="honzanoll.Data" Version="1.0.0" />
     <PackageReference Include="honzanoll.Storage" Version="1.0.0" />

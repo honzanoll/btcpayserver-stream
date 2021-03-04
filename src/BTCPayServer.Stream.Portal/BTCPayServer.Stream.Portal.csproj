@@ -25,6 +25,8 @@
   <ItemGroup>
     <ProjectReference Include="..\BTCPayServer.Stream.Business\BTCPayServer.Stream.Business.csproj" />
     <ProjectReference Include="..\BTCPayServer.Stream.Common\BTCPayServer.Stream.Common.csproj" />
+    <ProjectReference Include="..\BTCPayServer.Stream.Data.Npgsql\BTCPayServer.Stream.Data.Npgsql.csproj" />
+    <ProjectReference Include="..\BTCPayServer.Stream.Data.Sqlite\BTCPayServer.Stream.Data.Sqlite.csproj" />
     <ProjectReference Include="..\BTCPayServer.Stream.Repository\BTCPayServer.Stream.Repository.csproj" />
   </ItemGroup>
 

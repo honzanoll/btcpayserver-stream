@@ -1,12 +1,10 @@
 ﻿using BTCPayServer.Stream.Data.Models.Users;
 using honzanoll.Data.Models;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
 namespace BTCPayServer.Stream.Data.Models.Webhook
 {
-    [Table("BtcPayServer", Schema = "webhook")]
     public class BtcPayServerWebhook : ModelBase
     {
         #region Properties
