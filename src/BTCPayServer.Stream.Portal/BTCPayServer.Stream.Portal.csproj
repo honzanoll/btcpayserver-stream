@@ -5,7 +5,7 @@
     <LangVersion>8.0</LangVersion>
     <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
     <Configurations>Debug;Release</Configurations>
-    <Version>0.3.1</Version>
+    <Version>0.3.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
