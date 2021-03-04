@@ -21,6 +21,7 @@ WORKDIR /app
 COPY --from=build-env /app .
 
 RUN mkdir /Storage
+RUN mkdir /Database
 
 ENV ASPNETCORE_URLS http://+:5000
 EXPOSE 5000
