@@ -16,11 +16,11 @@ As redirect URL use https://{yoursite}/oauth/streamlabs/callback.
 
 2. Pull the image
 ```
-docker pull honzanoll/btcpayserver-stream:1.0.0
+docker pull honzanoll/btcpayserver-stream:1.0.1
 ```
 3. Start single node with Docker
 ```
-docker run -p 80:5000 -e "DatabaseProvider={UsedDatabaseProvider}" -e "ConnectionStrings:NpgsqlConnection={YourConnectionString}" -e "GlobalSettings:Infrastructure:FEUrl={YourHost}" -e "StreamlabsSettings:ClientId={YourStreamlabsAppClientId}" -e "StreamlabsSettings:ClientSecret={YourStreamlabsAppSecret}" -v {PathToStorage}:/Storage -v {PathToDatabase}:/Database honzanoll/btcpayserver-stream:1.0.0
+docker run -p 80:5000 -e "DatabaseProvider={UsedDatabaseProvider}" -e "ConnectionStrings:NpgsqlConnection={YourConnectionString}" -e "GlobalSettings:Infrastructure:FEUrl={YourHost}" -e "StreamlabsSettings:ClientId={YourStreamlabsAppClientId}" -e "StreamlabsSettings:ClientSecret={YourStreamlabsAppSecret}" -v {PathToStorage}:/Storage -v {PathToDatabase}:/Database honzanoll/btcpayserver-stream:1.0.1
 ```
 
 Alternatively, you can use docker compose
@@ -29,7 +29,7 @@ version: '3.7'
  
 services:
   portal:
-    image: "honzanoll/btcpayserver-stream:1.0.0"
+    image: "honzanoll/btcpayserver-stream:1.0.1"
   environment:
       - DatabaseProvider={UsedDatabaseProvider}
       - ConnectionStrings:NpgsqlConnection={YourConnectionString}
