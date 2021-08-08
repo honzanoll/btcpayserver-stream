@@ -183,6 +183,21 @@
   <data name="Label_GtagId" xml:space="preserve">
     <value>Google Analytics identifier</value>
   </data>
+  <data name="Label_MinTip" xml:space="preserve">
+    <value>Minimum tip</value>
+  </data>
+  <data name="Label_MinTip_CZK" xml:space="preserve">
+    <value>Minimal tip (CZK)</value>
+  </data>
+  <data name="Label_MinTip_EUR" xml:space="preserve">
+    <value>Minimal tip (EUR)</value>
+  </data>
+  <data name="Label_MinTip_SAT" xml:space="preserve">
+    <value>Minimal tip (SAT)</value>
+  </data>
+  <data name="Label_MinTip_USD" xml:space="preserve">
+    <value>Minimal tip (USD)</value>
+  </data>
   <data name="Label_NewPassword" xml:space="preserve">
     <value>New password</value>
   </data>

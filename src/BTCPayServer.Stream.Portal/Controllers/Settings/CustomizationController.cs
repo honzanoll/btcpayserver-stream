@@ -56,7 +56,11 @@ namespace BTCPayServer.Stream.Portal.Controllers.Settings
                 DefaultCulture = currentUser.DefaultCulture ?? Culture.EN,
                 LogoFileName = currentUser.LogoFileObject?.FileName,
                 PageTitle = currentUser.PageTitle,
-                GtagId = currentUser.GtagId
+                GtagId = currentUser.GtagId,
+                MinTipCZK = currentUser.MinTipsObject?.SingleOrDefault(mt => mt.Currency == InvoiceCurrency.CZK)?.MinValue ?? 20,
+                MinTipEUR = currentUser.MinTipsObject?.SingleOrDefault(mt => mt.Currency == InvoiceCurrency.EUR)?.MinValue ?? 1,
+                MinTipUSD = currentUser.MinTipsObject?.SingleOrDefault(mt => mt.Currency == InvoiceCurrency.USD)?.MinValue ?? 1,
+                MinTipSAT = currentUser.MinTipsObject?.SingleOrDefault(mt => mt.Currency == InvoiceCurrency.SAT)?.MinValue ?? 3000
             });
         }
 
@@ -106,6 +110,26 @@ namespace BTCPayServer.Stream.Portal.Controllers.Settings
                     currentUser.LogoFileObject = logoFile;
                     currentUser.PageTitle = values.PageTitle;
                     currentUser.GtagId = values.GtagId;
+
+                    currentUser.MinTipsObject = new System.Collections.Generic.List<MinTip>
+                    {
+                        new MinTip{
+                            Currency = InvoiceCurrency.CZK,
+                            MinValue = values.MinTipCZK.Value
+                        },
+                        new MinTip{
+                            Currency = InvoiceCurrency.EUR,
+                            MinValue = values.MinTipEUR.Value
+                        },
+                        new MinTip{
+                            Currency = InvoiceCurrency.USD,
+                            MinValue = values.MinTipUSD.Value
+                        },
+                        new MinTip{
+                            Currency = InvoiceCurrency.SAT,
+                            MinValue = values.MinTipSAT.Value
+                        }
+                    };
 
                     await userRepository.UpdateAsync(currentUser);
 

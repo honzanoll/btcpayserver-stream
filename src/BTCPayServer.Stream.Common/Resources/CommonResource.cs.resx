@@ -183,6 +183,21 @@
   <data name="Label_GtagId" xml:space="preserve">
     <value>Google Analytics identifikátor</value>
   </data>
+  <data name="Label_MinTip" xml:space="preserve">
+    <value>Minimální výše donatu</value>
+  </data>
+  <data name="Label_MinTip_CZK" xml:space="preserve">
+    <value>Minimální výše donatu (CZK)</value>
+  </data>
+  <data name="Label_MinTip_EUR" xml:space="preserve">
+    <value>Minimální výše donatu (EUR)</value>
+  </data>
+  <data name="Label_MinTip_SAT" xml:space="preserve">
+    <value>Minimální výše donatu (SAT)</value>
+  </data>
+  <data name="Label_MinTip_USD" xml:space="preserve">
+    <value>Minimální výše donatu (USD)</value>
+  </data>
   <data name="Label_NewPassword" xml:space="preserve">
     <value>Nové heslo</value>
   </data>

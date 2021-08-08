@@ -49,6 +49,14 @@ namespace BTCPayServer.Stream.Data.Models.Users
 
         public string GtagId { get; set; }
 
+        public string MinTips { get; set; }
+        [NotMapped]
+        public List<MinTip> MinTipsObject
+        {
+            get => MinTips.FromJson<List<MinTip>>();
+            set => MinTips = value.ToJson();
+        }
+
         public virtual ICollection<StreamlabsAuthToken> StreamlabsAuthTokens { get; }
 
         public virtual ICollection<BtcPayServerAuthToken> BtcPayServerAuthTokens { get; }

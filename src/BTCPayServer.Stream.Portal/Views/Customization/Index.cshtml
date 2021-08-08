@@ -65,6 +65,28 @@
                         <input asp-for="GtagId" class="form-control" />
                         <span asp-validation-for="GtagId" class="text-danger"></span>
                     </div>
+                    <hr />
+                    <h5 style="padding-top: 5px;">@CommonResource.Label_MinTip.ToUpper()</h5>
+                    <div class="form-group">
+                        <label asp-for="MinTipCZK" class="control-label"></label>
+                        <input asp-for="MinTipCZK" class="form-control" />
+                        <span asp-validation-for="MinTipCZK" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MinTipEUR" class="control-label"></label>
+                        <input asp-for="MinTipEUR" class="form-control" />
+                        <span asp-validation-for="MinTipEUR" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MinTipUSD" class="control-label"></label>
+                        <input asp-for="MinTipUSD" class="form-control" />
+                        <span asp-validation-for="MinTipUSD" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MinTipSAT" class="control-label"></label>
+                        <input asp-for="MinTipSAT" class="form-control" />
+                        <span asp-validation-for="MinTipSAT" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <input type="submit" value="@CommonResource.Button_Save" class="btn btn-primary" />
                     </div>

@@ -12,6 +12,7 @@ using honzanoll.MVC.NetCore.ViewModels;
 using System;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace BTCPayServer.Stream.Portal.Controllers
 {
@@ -92,21 +93,20 @@ namespace BTCPayServer.Stream.Portal.Controllers
             if (!ModelState.IsValid)
                 return Json(new FormValidationsViewModel(ModelState));
 
-            if ((values.Currency == InvoiceCurrency.USD || values.Currency == InvoiceCurrency.EUR) && values.Amount.Value < 1)
-                ModelState.AddModelError(nameof(values.Amount), string.Format(CommonResource.Validation_MinTip_Format, 1, values.Currency));
-            else if (values.Currency == InvoiceCurrency.CZK && values.Amount.Value < 20)
-                ModelState.AddModelError(nameof(values.Amount), string.Format(CommonResource.Validation_MinTip_Format, 20, values.Currency));
-            else if (values.Currency == InvoiceCurrency.SAT && values.Amount.Value < 3000)
-                ModelState.AddModelError(nameof(values.Amount), string.Format(CommonResource.Validation_MinTip_Format, 3000, values.Currency));
+            ApplicationUser applicationUser = await userRepository.GetAsync(values.TargetUserId);
+            if (applicationUser == null)
+                ModelState.AddModelError(nameof(values.TargetUserId), CommonResource.Validation_UnknownTargetUser);
+
+            if (!ModelState.IsValid)
+                return Json(new FormValidationsViewModel(ModelState));
 
             // Check message length by bytes count (Streamlabs required)
             string message = streamlabsService.PrepareMessage(values.Message);
             if (message != null && Encoding.UTF8.GetByteCount(message) > 230)
                 ModelState.AddModelError(nameof(values.Message), CommonResource.Validation_MaxLength_230);
 
-            ApplicationUser applicationUser = await userRepository.GetAsync(values.TargetUserId);
-            if (applicationUser == null)
-                ModelState.AddModelError(nameof(values.TargetUserId), CommonResource.Validation_UnknownTargetUser);
+            // Check if tip value is enough
+            ValidateTipValue(values.Amount.Value, values.Currency.Value, applicationUser);
 
             if (!ModelState.IsValid)
                 return Json(new FormValidationsViewModel(ModelState));
@@ -129,5 +129,28 @@ namespace BTCPayServer.Stream.Portal.Controllers
         {
             return View();
         }
+
+        #region Private methods
+
+        private void ValidateTipValue(decimal value, InvoiceCurrency currency, ApplicationUser applicationUser)
+        {
+            decimal? minValue = applicationUser.MinTipsObject?.SingleOrDefault(mt => mt.Currency == currency)?.MinValue;
+            if (minValue.HasValue)
+            {
+                if (value < minValue.Value)
+                    ModelState.AddModelError(nameof(DonateFormViewModel.Amount), string.Format(CommonResource.Validation_MinTip_Format, minValue.Value, currency));
+            }
+            else
+            {
+                if ((currency == InvoiceCurrency.USD || currency == InvoiceCurrency.EUR) && value < 1)
+                    ModelState.AddModelError(nameof(DonateFormViewModel.Amount), string.Format(CommonResource.Validation_MinTip_Format, 1, currency));
+                else if (currency == InvoiceCurrency.CZK && value < 20)
+                    ModelState.AddModelError(nameof(DonateFormViewModel.Amount), string.Format(CommonResource.Validation_MinTip_Format, 20, currency));
+                else if (currency == InvoiceCurrency.SAT && value < 3000)
+                    ModelState.AddModelError(nameof(DonateFormViewModel.Amount), string.Format(CommonResource.Validation_MinTip_Format, 3000, currency));
+            }
+        }
+
+        #endregion
     }
 }

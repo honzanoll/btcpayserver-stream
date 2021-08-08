@@ -259,6 +259,51 @@ namespace BTCPayServer.Stream.Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimum tip.
+        /// </summary>
+        public static string Label_MinTip {
+            get {
+                return ResourceManager.GetString("Label_MinTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal tip (CZK).
+        /// </summary>
+        public static string Label_MinTip_CZK {
+            get {
+                return ResourceManager.GetString("Label_MinTip_CZK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal tip (EUR).
+        /// </summary>
+        public static string Label_MinTip_EUR {
+            get {
+                return ResourceManager.GetString("Label_MinTip_EUR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal tip (SAT).
+        /// </summary>
+        public static string Label_MinTip_SAT {
+            get {
+                return ResourceManager.GetString("Label_MinTip_SAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal tip (USD).
+        /// </summary>
+        public static string Label_MinTip_USD {
+            get {
+                return ResourceManager.GetString("Label_MinTip_USD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New password.
         /// </summary>
         public static string Label_NewPassword {

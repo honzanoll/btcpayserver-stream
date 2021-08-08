@@ -3,6 +3,7 @@ using System;
 using BTCPayServer.Stream.Data.DALs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BTCPayServer.Stream.Data.Sqlite.Migrations
 {
@@ -192,6 +193,9 @@ namespace BTCPayServer.Stream.Data.Sqlite.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LogoFile")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MinTips")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedEmail")

@@ -31,6 +31,22 @@ namespace BTCPayServer.Stream.Portal.ViewModels.Settings
         [Display(Name = nameof(CommonResource.Label_GtagId), ResourceType = typeof(CommonResource))]
         public string GtagId { get; set; }
 
+        [Required(ErrorMessageResourceName = nameof(CommonResource.Validation_Required), ErrorMessageResourceType = typeof(CommonResource))]
+        [Display(Name = nameof(InvoiceCurrency.CZK))]
+        public decimal? MinTipCZK { get; set; }
+
+        [Required(ErrorMessageResourceName = nameof(CommonResource.Validation_Required), ErrorMessageResourceType = typeof(CommonResource))]
+        [Display(Name = nameof(InvoiceCurrency.EUR))]
+        public decimal? MinTipEUR { get; set; }
+
+        [Required(ErrorMessageResourceName = nameof(CommonResource.Validation_Required), ErrorMessageResourceType = typeof(CommonResource))]
+        [Display(Name = nameof(InvoiceCurrency.USD))]
+        public decimal? MinTipUSD { get; set; }
+
+        [Required(ErrorMessageResourceName = nameof(CommonResource.Validation_Required), ErrorMessageResourceType = typeof(CommonResource))]
+        [Display(Name = nameof(InvoiceCurrency.SAT))]
+        public decimal? MinTipSAT { get; set; }
+
         #endregion
     }
 }
