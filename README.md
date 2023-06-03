@@ -12,15 +12,16 @@ Set your Google Analytics identifier to track your donors.
 The easiest and the recommended way to run *btcpayserver-stream* payment gateway is via Docker.
 
 1. Register new application on streamlabs.com/dashboard (see https://dev.streamlabs.com/docs/register-your-application for further informations) \
-As redirect URL use https://{yoursite}/oauth/streamlabs/callback.
+As redirect URL use https://{yoursite}/oauth/streamlabs/callback.\
+**NOTE: Only Stremlabs API v2.0 is supported.**
 
 2. Pull the image
 ```
-docker pull honzanoll/btcpayserver-stream:1.0.2
+docker pull honzanoll/btcpayserver-stream:1.1.0
 ```
 3. Start single node with Docker
 ```
-docker run -p 80:5000 -e "DatabaseProvider={UsedDatabaseProvider}" -e "ConnectionStrings:NpgsqlConnection={YourConnectionString}" -e "GlobalSettings:Infrastructure:FEUrl={YourHost}" -e "StreamlabsSettings:ClientId={YourStreamlabsAppClientId}" -e "StreamlabsSettings:ClientSecret={YourStreamlabsAppSecret}" -v {PathToStorage}:/Storage -v {PathToDatabase}:/Database honzanoll/btcpayserver-stream:1.0.2
+docker run -p 80:5000 -e "DatabaseProvider={UsedDatabaseProvider}" -e "ConnectionStrings:NpgsqlConnection={YourConnectionString}" -e "GlobalSettings:Infrastructure:FEUrl={YourHost}" -e "StreamlabsSettings:ClientId={YourStreamlabsAppClientId}" -e "StreamlabsSettings:ClientSecret={YourStreamlabsAppSecret}" -v {PathToStorage}:/Storage -v {PathToDatabase}:/Database honzanoll/btcpayserver-stream:1.1.0
 ```
 
 Alternatively, you can use docker compose
@@ -29,7 +30,7 @@ version: '3.7'
  
 services:
   portal:
-    image: "honzanoll/btcpayserver-stream:1.0.2"
+    image: "honzanoll/btcpayserver-stream:1.1.0"
   environment:
       - DatabaseProvider={UsedDatabaseProvider}
       - ConnectionStrings:NpgsqlConnection={YourConnectionString}

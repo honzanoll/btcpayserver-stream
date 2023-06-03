@@ -30,7 +30,7 @@ namespace BTCPayServer.Stream.HttpClients.StreamlabsClient
 
         public async Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest requestData)
         {
-            HttpResponseMessage response = await httpClient.PostAsync("v1.0/token", GetRequest(requestData));
+            HttpResponseMessage response = await httpClient.PostAsync("v2.0/token", GetRequest(requestData));
             httpClient.Dispose();
 
             await EnsureValidResponseAsync(response);
@@ -38,9 +38,12 @@ namespace BTCPayServer.Stream.HttpClients.StreamlabsClient
             return await GetResponse<GetAccessTokenResponse>(response.Content);
         }
 
-        public async Task<SendDonateResponse> SendDonateAsync(SendDonateRequest requestData)
+        public async Task<SendDonateResponse> SendDonateAsync(SendDonateRequest requestData, string accessToken)
         {
-            HttpResponseMessage response = await httpClient.PostAsync("v1.0/donations", GetRequest(requestData));
+            // Add access token the request header
+            httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+
+            HttpResponseMessage response = await httpClient.PostAsync("v2.0/donations", GetRequest(requestData));
             httpClient.Dispose();
 
             await EnsureValidResponseAsync(response);

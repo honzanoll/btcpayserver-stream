@@ -10,7 +10,7 @@ namespace BTCPayServer.Stream.HttpClients.Abstractions
 
         Task<GetAccessTokenResponse> GetAccessTokenAsync(GetAccessTokenRequest requestData);
 
-        Task<SendDonateResponse> SendDonateAsync(SendDonateRequest requestData);
+        Task<SendDonateResponse> SendDonateAsync(SendDonateRequest requestData, string accessToken);
 
         #endregion
     }

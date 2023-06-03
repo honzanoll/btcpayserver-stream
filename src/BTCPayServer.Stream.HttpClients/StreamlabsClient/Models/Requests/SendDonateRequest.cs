@@ -24,9 +24,6 @@ namespace BTCPayServer.Stream.HttpClients.StreamlabsClient.Models.Requests
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
 
-        [JsonProperty("access_token", Required = Required.Always)]
-        public string AccessToken { get; set; }
-
         [JsonProperty("skip_alert")]
         public string SkipAlert { get; set; }
 

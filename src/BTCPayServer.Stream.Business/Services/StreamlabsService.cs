@@ -112,11 +112,10 @@ namespace BTCPayServer.Stream.Business.Services
                 Message = emojiConverter.Convert(donate.Message),
                 Identifier = donate.Identifier,
                 Amount = amount,
-                Currency = donate.Currency.ToISO().ToString(),
-                AccessToken = accessToken
+                Currency = donate.Currency.ToISO().ToString()
             };
 
-            await streamlabsHttpClient.SendDonateAsync(request);
+            await streamlabsHttpClient.SendDonateAsync(request, accessToken);
 
             logger.LogInformation($"Donate has been successfully sent (data: {request.ToJson()})");
         }
